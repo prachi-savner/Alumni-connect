@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" href="/"><i class="fa-solid fa-house"></i> Home</a>
+        <%if(currUser){%>
+        <a class="nav-link" href="/alumni"><i class="fa-solid fa-user-tie"></i> Alumni</a>
+        <a class="nav-link" href="/student"><i class="fa-solid fa-graduation-cap"></i> Students</a>
+        <a class="nav-link" href="/job"><i class="fa-solid fa-briefcase"></i> Jobs</a>
+        <a class="nav-link" href="/event"><i class="fa-solid fa-calendar-days"></i> Events</a>
+        <a class="nav-link" href="/chat"><i class="fa-solid fa-comment-dots"></i> Join chat</a>
+        <%}%>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <%if(!currUser){%>
+        <a class="nav-link active" href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+        <a class="nav-link" href="/signup">Signup</a>
+        <%}%>
+        <%if(currUser){%>
+        <a class="nav-link" href="/logout"><i class="fa-solid fa-arrow-right-to-bracket"></i> logout</a>
+        <%}%>
+      </div>
+    </div>
+  </div>
+</nav>

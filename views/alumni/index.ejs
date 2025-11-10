@@ -1,0 +1,57 @@
+<%layout("/layouts/boilerplate")%>
+<body>
+    <h3>All Alumni</h3>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+  <% for(let alumni of alumnis){ %>
+    <div class="col">
+      <a href="/alumni/<%= alumni._id %>" class="text-decoration-none text-dark">
+        <div class="card shadow-sm flex-row" style="margin-bottom: 5rem;">
+          
+          <!-- Left: Image -->
+          <div class="col-5">
+            <img src="<%= alumni.profilePic.url %>" 
+                 class="img-fluid object-fit-cover image-icon" 
+                 alt="alumni" 
+                 >
+          </div>
+
+          <!-- Right: Text Content -->
+          <div class="col-7 d-flex align-items-center">
+            <div class="card-body">
+              <p class="card-text mb-1 text-muted">
+                <b><%= alumni.name %></b><br><br>
+                 <i class="fa-solid fa-building">  </i><%= alumni.company %><br><br>
+                 <i class="fa-solid fa-user-tie">  </i><%= alumni.role %><br><br>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </a>
+    </div>
+  <% } %>
+</div>
+
+
+    <!-- <div class="row row-cols-lg-3 row-cols-md-1 row-cols-sm-1">
+<% for(let alumni of alumnis){%>
+    <div class="card" >
+  <img src="<%=alumni.profilePic.url%>" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><b><%=alumni.name%></b></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%=alumni.comapany%></li>
+    <li class="list-group-item"><%=alumni.position%></li>
+    <li class="list-group-item"><%=alumni.experience%></li>
+  </ul>
+  <div class="card-body">
+    <a href="/alumni/<%=alumni._id%>" class="card-link">See more</a>
+  </div>
+</div>
+ <%}%>
+ </div> -->
+</body>
+</html>

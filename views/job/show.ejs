@@ -1,0 +1,26 @@
+<%layout("/layouts/boilerplate")%>
+
+<div class="row mt-3">
+        <div class="card col-6 offset-3 jobs ">
+                <p class="card-text">
+                    <b>Job Title: </b><%= job.title%><br>
+                    <b>Description: </b><%= job.description%><br>
+                    <b>Position: </b><%= job.position%><br>
+                    <b>Company: </b><%= job.company%><br>
+                    <b>Location: </b><%= job.location%><br>
+                    <b>Type: </b><%= job.type%><br>
+                    <b>Skills required: </b><%= job.skills%><br>
+                </p>
+        </div>
+
+        <%if(currUser && currUser._id.equals(job.postedBy._id)){%>
+<div class="row mt-3">
+    <div class="btns">
+    <a class="btn btn-dark col-1 offset-3 edit-btn" href="/job/<%=job._id%>/edit"> Edit</a>
+    <form method="POST" action="/job/<%=job._id%>?_method=DELETE">
+        <button class="btn btn-dark offset-5">Delete</button>
+    </form>
+    </div>
+ </div>
+ 
+ <%}%>

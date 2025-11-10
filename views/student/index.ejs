@@ -1,0 +1,45 @@
+<%layout("/layouts/boilerplate")%>
+<body>
+    <h3>All Students</h3>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <% for(let student of students){%>
+            <a href="/student/<%=student._id%>" class="card-link">
+
+                <div class="card shadow-sm flex-row" style="margin-bottom: 5rem;">
+          
+          <!-- Left: Image -->
+          <div class="col-5">
+            <img src="<%= student.profilePic.url %>" 
+                 class="img-fluid object-fit-cover image-icon" 
+                 alt="student" 
+                 >
+          </div>
+
+          <!-- Right: Text Content -->
+          <div class="col-7 d-flex align-items-center">
+            <div class="card-body">
+              <p class="card-text mb-1 text-muted">
+                <b><%= student.name %></b><br><br>
+                 <%= student.year %><br>
+                 <%= student.course %><br>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+            <!-- <div class="card col">
+                    <img src="<%=student.profilePic.url%>" class="card-img-top" alt="student" style="height: 20rem;">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                        <p class="card-text title-name">
+                            <b><%=student.name%></b>
+                        </p>
+                    </div>
+            </div> -->
+            </a>
+        <%}%>
+    </div>
+</body>
+</html>

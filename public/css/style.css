@@ -1,0 +1,206 @@
+
+body{
+     font-family: "Plus Jakarta Sans", sans-serif !important;
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
+     background-color:#f1f1f1;
+
+}
+.container{
+    flex: 1;
+}
+
+/* navbar */
+.navbar{
+    height:5rem;
+    background-color: white;
+}
+
+.fa-compass{
+    font-size: 2rem;
+    color:#fe424d;
+}
+.nav-link{
+    color: #222222 !important;
+}
+
+/* image */
+.img-fluid{
+    height:200px !important;
+    width: 200px !important;
+}
+
+/* cards */
+.card-link{
+    text-decoration: none;
+}
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 2rem;
+    /* display: flex;
+    justify-content: center; */
+   /* padding-left: 3rem; */
+    padding-top: 1rem;
+}
+
+.title-name{
+    font-size: x-large;
+}
+
+.card-text{
+    font-weight: 400 !important;
+    line-height: 2rem;
+}
+
+.form-button{
+    padding: 2rem 0;
+}
+
+
+/* .show-card{
+    padding-left: 0;
+    padding-right: 0;
+} */
+
+/* jobs */
+.jobs{
+    margin-top: 2rem;
+    padding: 1rem;
+}
+.job-content{
+    /* display: flex;
+    justify-content: flex-start; */
+    height: 250px;
+    padding: 2rem;
+    color: black;
+}
+/* 
+.job-card{
+    border:2px solid black !important;
+    border-radius: 50px;
+} */
+
+/* .job-card {
+  transition: all 0.25s ease-in-out;
+  border-radius: 1rem;
+} */
+/* .job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+} */
+
+
+
+h3{
+    color: #0d6efd;
+    padding: 1rem;
+    font-weight: 700;
+}
+
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+
+/* ---------- LOGIN PAGE ---------- */
+.user-form{
+  padding: 4rem 2rem;
+  background-color: white; 
+  border-radius: 1rem;
+}
+
+.user-btn{
+    width: 100%;
+}
+
+
+/* ---------- FOOTER (BLACK THEME) ---------- */
+.footer {
+  background-color: #000; /* black background */
+  color: #fff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.footer h5,
+.footer h6 {
+  color: #d4af37; /* champagne gold headings */
+}
+
+.footer p,
+.footer li {
+  color: #bdbdbd; /* muted light text */
+  font-size: 0.95rem;
+}
+
+.footer a {
+  color: #f8f9fa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #d4af37;
+  text-decoration: underline;
+}
+
+/* Quick Links */
+.footer ul li {
+  margin-bottom: 8px;
+}
+
+/* Social Icons */
+.footer .social-icons a {
+  display: inline-block;
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  margin-right: 12px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+  color: #d4af37;
+  transform: scale(1.2);
+}
+
+/* Contact Info */
+.footer .contact-info li {
+  margin-bottom: 10px;
+}
+
+/* Divider Line */
+.footer hr {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Bottom Text */
+.footer .text-muted {
+  color: #aaa !important;
+}
+
+.image-icon{
+  object-fit: cover; 
+  border-radius: 50%; 
+  padding: 3rem 2rem;
+}
+
+i{
+  opacity: 0.8;
+}

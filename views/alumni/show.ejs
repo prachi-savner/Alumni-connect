@@ -1,0 +1,43 @@
+
+    <% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+
+      <!-- Profile Image -->
+      <img 
+        src="<%= alumni.profilePic.url %>" 
+        alt="Profile Picture" 
+        class="rounded-circle img-fluid shadow mb-3"
+        style="width: 200px; height: 200px; object-fit: cover;"
+      >
+
+      <!-- alumni Name -->
+      <h3 class="fw-bold mb-4"><%= alumni.name %></h3>
+
+      <!-- Card -->
+      <div class="card shadow border-0 text-start">
+        <div class="card-body">
+          <p class="card-text mt-3">
+                    <b>Company: </b><%= alumni.company%><br>
+                    <b>Position: </b><%= alumni.position%><br>
+                    <b>Experience: </b><%= alumni.experience%><br>
+                    <b>Skills: </b><%= alumni.skills%><br>
+                    <b>Linkedin: </b><%= alumni.linkedin%><br>
+                    <b>Github: </b><%= alumni.github%><br>
+                    <b>Bio: </b><%= alumni.bio%><br>
+                </p>
+      </div>
+
+      <% if(currUser && currUser._id.equals(alumni._id)) { %>
+        <div class="mt-4 d-flex justify-content-center gap-3">
+          <a href="/alumni/<%= alumni._id %>/edit" class="btn btn-dark px-4">Edit</a>
+          <form method="POST" action="/alumni/<%= alumni._id %>?_method=DELETE">
+            <button class="btn btn-danger px-4">Delete</button>
+          </form>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>

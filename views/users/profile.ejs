@@ -1,0 +1,33 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="profile-container fade-up">
+  <div style="display:flex; justify-content:space-between">
+      <h1 class="profile-title">My Profile</h1>
+  <form method="GET" action="<%=user.role%>/<%=user._id%>/edit" >
+        <button class="btn btn-primary">
+          <i class="fa fa-pen"></i> Edit Profile
+        </button>
+      </form>
+  </div>
+  
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-info">
+        <h2 class="name"><%= user.name %></h2>
+        <p><i class="fa fa-envelope"></i> <%= user.email %></p>
+        <p><i class="fa fa-laptop-code"></i> <%= user.course %> • <%= user.year %></p>
+        <p><i class="fa fa-map-marker-alt"></i> <%= user.location %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card fade-up">
+    <h3><i class="fa fa-user"></i> About Me</h3>
+    <p><%= user.bio %></p>
+  </div>
+
+  <div class="section-card fade-up">
+    <h3><i class="fa fa-tools"></i> Skills</h3>
+    <p><%= user.skills.join(" • ") %></p>
+  </div>
+</div>

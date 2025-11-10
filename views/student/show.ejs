@@ -1,0 +1,79 @@
+<!-- <%layout("/layouts/boilerplate")%>
+
+<div class="row mt-3">
+    <div class="col-8 offset-3">
+        <h3><b><%= student.name%></b><br></h3>
+    </div>
+        <div class="card col-6 offset-3 show-card ">
+                <img src="<%=student.profilePic.url%>" class="card-img-top show-img" alt="student">
+                <div class="card-body" style="display: flex; justify-content: center; ">
+                <p class="card-text mt-3" style="padding-left: 8rem;">
+                    <b>Course: </b><%= student.course%><br>
+                    <b>Year: </b><%= student.year%><br>
+                    <b>Skills: </b><%= student.skills%><br>
+                    <b>Linkedin: </b><%= student.linkedin%><br>
+                    <b>Github: </b><%= student.github%><br>
+                    <b>Bio: </b><%= student.bio%><br>
+                </p>
+                </div>
+        </div>
+    <%if(currUser && currUser._id.equals(student._id)){%>
+    <div class="btns">
+    <a class="btn btn-dark col-1 offset-3 edit-btn" href="/student/<%=student._id%>/edit"> Edit</a>
+    <form method="POST" action="/student/<%=student._id%>?_method=DELETE">
+        <button class="btn btn-dark offset-5">Delete</button>
+    </form>
+    </div>
+
+    <%}%> -->
+
+  <% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+
+      <!-- Profile Image -->
+      <img 
+        src="<%= student.profilePic.url %>" 
+        alt="Profile Picture" 
+        class="rounded-circle img-fluid shadow mb-3"
+        style="width: 200px; height: 200px; object-fit: cover;"
+      >
+
+      <!-- Student Name -->
+      <h3 class="fw-bold mb-4"><%= student.name %></h3>
+
+      <!-- Card -->
+      <div class="card shadow border-0 text-start">
+        <div class="card-body">
+          <p class="card-text mb-2"><strong>Course:</strong> <%= student.course %></p>
+          <p class="card-text mb-2"><strong>Year:</strong> <%= student.year %></p>
+          <p class="card-text mb-2"><strong>Skills:</strong> <%= student.skills %></p>
+          <p class="card-text mb-2">
+            <strong>LinkedIn:</strong> 
+            <% if(student.linkedin && student.linkedin !== '') { %>
+              <a href="<%= student.linkedin %>" target="_blank"><%= student.linkedin %></a>
+            <% } else { %>
+              Not Provided
+            <% } %>
+          </p>
+          <p class="card-text mb-2">
+            <strong>GitHub:</strong> 
+            <a href="<%= student.github %>" target="_blank"><%= student.github %></a>
+          </p>
+          <p class="card-text"><strong>Bio:</strong> <%= student.bio %></p>
+        </div>
+      </div>
+
+      <% if(currUser && currUser._id.equals(student._id)) { %>
+        <div class="mt-4 d-flex justify-content-center gap-3">
+          <a href="/student/<%= student._id %>/edit" class="btn btn-dark px-4">Edit</a>
+          <form method="POST" action="/student/<%= student._id %>?_method=DELETE">
+            <button class="btn btn-danger px-4">Delete</button>
+          </form>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>

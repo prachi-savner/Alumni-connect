@@ -1,0 +1,20 @@
+<%layout("/layouts/boilerplate")%>
+
+<div class="row mt-3">
+        <div class="card col-4 offset-4 " style="margin-top: 2rem;">
+                <p class="card-text">
+                    <b><%= event.title%></b><br>
+                    <b><%= event.description%> </b><br>
+                    <b></b><%= event.date%><br>
+                    <b></b><%= event.place%><br>
+                    <b></b><%= event.host%>
+                </p>
+        </div>
+<div class="row mt-3"style="margin-left:6rem">
+    <div class="btns">
+    <a class="btn btn-dark col-1 offset-3" href="/event/<%=event._id%>/edit"> Edit</a>
+    <form method="POST" action="/event/<%=event._id%>?_method=DELETE">
+        <button class="btn btn-dark offset-5">Delete</button>
+    </form>
+    </div>
+ </div>   

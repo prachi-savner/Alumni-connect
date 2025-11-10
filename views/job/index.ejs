@@ -1,0 +1,68 @@
+<!-- <%layout("/layouts/boilerplate")%>
+<body>
+    <h3>All Jobs</h3>
+    <%if(currUser.role=="alumni"){%>
+    <form action="/job/new" method="GET" class=" form-button">
+        <button class="btn btn-dark">Add new post </button>
+    </form>
+    <%}%>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <% for(let job of jobs){%>
+            <div class="col">
+            <div class="card col-10 offset-2 ">
+                <a href="/job/<%=job._id%>" class="card-link job-card">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body job-content">
+                        <p class="card-text">
+                            <b><%=job.title%></b><br>
+                            <i style="text-decoration: underline;">Description: </i><%=job.description%>
+                            
+                    </div>
+                </a>
+            </div>
+            </div>
+        <%}%>
+    </div>
+</body>
+</html> -->
+
+<% layout("/layouts/boilerplate") %>
+<body class="bg-light">
+  <div class="container py-4">
+    <h2 class="fw-bold mb-4 text-primary">Job & Internship Opportunities</h2>
+
+    <% if (currUser && currUser.role === "alumni") { %>
+      <form action="/job/new" method="GET" class="mb-4">
+        <button class="btn btn-dark">+ Add New Job</button>
+      </form>
+    <% } %>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <% for(job of jobs) { %>
+        <div class="col">
+          <div class="card h-100 shadow-sm border-0 rounded-4 job-card">
+            <div class="card-body">
+              <h5 class="fw-bold text-dark mb-2 text-capitalize"><%= job.title %></h5>
+
+<p class="text-muted mb-1">
+  <i class="fa-solid fa-building"></i> <%= job.company %>
+</p>
+<p class="text-muted mb-1">
+  <i class="fa-solid fa-briefcase"></i> <%= job.type %>
+</p>
+<p class="text-muted mb-3">
+  <i class="fa-solid fa-location-dot"></i> <%= job.location %>
+</p>
+
+
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="/job/<%= job._id %>" class="stretched-link text-decoration-none text-primary fw-semibold">View Details →</a>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>

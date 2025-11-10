@@ -1,0 +1,48 @@
+<%layout("/layouts/boilerplate")%>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+            <h3>Edit your profile</h3>
+    <form method="POST" action="/student/<%=student._id%>?_method=PUT" novalidate class="needs-validation">
+        <div class="mb-3">
+            <label for="name" class="form-label">name</label>
+            <input name="student[name]"value="<%=student.name%>" type="text" class="form-control"required>
+        </div>
+        <div class="mb-3">
+            <label for="skills" class="form-label">skills</label>
+            <input name="student[skills]" class="form-control" required value="<%=student.skills%>">
+        </div>
+        <div class="mb-3">
+            <label for="profilePic" class="form-label">Image Link</label>
+            <input name="student[profilePic][url]"  value="<%=student.profilePic.url%>"  type="text" class="form-control" >
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-4">
+            <label for="year" class="form-label">year</label>
+            <input name="student[year]" value="<%=student.year%>" type="text" class="form-control" required>
+            </div>
+        
+           <div class="mb-3">
+            <label for="company" class="form-label">Course</label>
+            <input name="student[course]" class="form-control" required value="<%=student.course%>">
+        </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="linkedin" class="form-label">linkedin</label>
+            <input name="student[linkedin]" value="<%=student.linkedin%> "type="text" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="github" class="form-label">github</label>
+            <input name="student[github]" value="<%=student.github%> "type="text" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="bio" class="form-label">Bio</label>
+            <textarea name="student[bio]" type="text" class="form-control" required><%=student.bio%></textarea>
+        </div>
+        <button class="btn btn-dark edit-btn mt-3">Save Changes</button>
+        <br><br>
+    </form> 
+        </div>
+    </div>
+  

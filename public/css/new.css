@@ -1,0 +1,80 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar
+.navbar-brand {
+  font-size: 1.5rem;
+}
+.nav-link {
+  font-weight: 500;
+} */
+.nav-link:hover {
+  color: #0d6efd !important;
+}
+
+/* Hero Section */
+.hero {
+  height: 90vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url("https://plus.unsplash.com/premium_photo-1661632613351-612b56224472?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1974") center/cover no-repeat;
+}
+.hero h1 {
+  font-size: 3rem;
+  color: #fff;
+}
+.hero p {
+  color: #e0e0e0;
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Features Section */
+.feature-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
+.footer {
+  background-color: #212529;
+  color: white;
+}
+.footer p {
+  margin: 0;
+}
+
+
+/* About Section */
+.about {
+  background-color: #fff;
+}
+
+.about img {
+  border-radius: 16px;
+  transition: transform 0.4s ease;
+}
+
+.about img:hover {
+  transform: scale(1.03);
+}
+
+.about h2 {
+  font-size: 2rem;
+  color: #0d6efd;
+}
+
+.about p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
