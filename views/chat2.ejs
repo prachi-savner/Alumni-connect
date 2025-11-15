@@ -20,21 +20,13 @@
   </style>
 </head>
 <body>
-  <div class="sidebar">
-    <h3>Chat Users</h3>
-    <button id="publicBtn" style="margin-bottom: 10px;">🌐 Common Discussion</button>
-    <ul id="userList">
-      <% users.forEach(u => { %>
-        <li class="user" data-id="<%= u._id %>"><%= u.name %></li>
-      <% }) %>
-    </ul>
-  </div>
-
+  <h3 id="user"></h3>
+  
   <div class="chat">
     <div id="messages" class="messages"></div>
     <form id="chatForm" class="input-box">
       <input id="messageInput" placeholder="Type message..." autocomplete="off" />
-      <button>Send</button>
+      <button id="send-btn">Send</button>
     </form>
   </div>
 
@@ -44,34 +36,36 @@
     const currUserName = "<%= user.name %>";
 
     let currentRoom = "common-room";
-    let chatType = "public";
+    let chatType = "private";
     let receiverId = null;
 
     const messagesDiv = document.getElementById("messages");
     const input = document.getElementById("messageInput");
     const form = document.getElementById("chatForm");
-    const users = document.querySelectorAll(".user");
-    const publicBtn = document.getElementById("publicBtn");
+    const users = document.getElementById("user");
+    const btn = document.getElementById("send-btn");
+    // const publicBtn = document.getElementById("publicBtn");
 
-    // Switch to public chat
-    publicBtn.addEventListener("click", () => {
-      chatType = "public";
-      receiverId = null;
-      currentRoom = "common-room";
-      messagesDiv.innerHTML = "";
-    });
+    // Switch to private chat
+    // users.forEach((user) => {
+      
+        receiverId = user.dataset.id;
+        chatType = "private";
+        socket.emit("joinPrivateRoom", { senderId: currUserId, receiverId });
+        
+    
+    // });
 
+    
 
-    // Receive public message
-    socket.on("publicMessage", (data) => {
+    // Receive private message
+    socket.on("privateMessage", (data) => {
       const div = document.createElement("div");
       div.classList.add("msg");
       div.innerHTML = `<span>${data.sender.name}</span>: ${data.content}`;
       messagesDiv.appendChild(div);
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     });
-
-    
 
     // Load chat history
     socket.on("chatHistory", (msgs) => {
@@ -91,17 +85,14 @@
       const message = input.value.trim();
       if (!message) return;
 
-      if (chatType === "public") {
-        socket.emit("publicMessage", { userId: currUserId, message });
-      } else {
         socket.emit("privateMessage", {
           senderId: currUserId,
           receiverId,
           message,
         });
-      }
+      
       input.value = "";
-    });
+      })
   </script>
 </body>
 </html>

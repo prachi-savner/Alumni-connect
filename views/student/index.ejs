@@ -1,45 +1,45 @@
-<%layout("/layouts/boilerplate")%>
-<body>
-    <h3>All Students</h3>
+<% layout("/layouts/boilerplate") %>
 
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-        <% for(let student of students){%>
-            <a href="/student/<%=student._id%>" class="card-link">
-
-                <div class="card shadow-sm flex-row" style="margin-bottom: 5rem;">
-          
-          <!-- Left: Image -->
-          <div class="col-5">
-            <img src="<%= student.profilePic.url %>" 
-                 class="img-fluid object-fit-cover image-icon" 
-                 alt="student" 
-                 >
-          </div>
-
-          <!-- Right: Text Content -->
-          <div class="col-7 d-flex align-items-center">
-            <div class="card-body">
-              <p class="card-text mb-1 text-muted">
-                <b><%= student.name %></b><br><br>
-                 <%= student.year %><br>
-                 <%= student.course %><br>
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-            <!-- <div class="card col">
-                    <img src="<%=student.profilePic.url%>" class="card-img-top" alt="student" style="height: 20rem;">
-                    <div class="card-img-overlay"></div>
-                    <div class="card-body">
-                        <p class="card-text title-name">
-                            <b><%=student.name%></b>
-                        </p>
-                    </div>
-            </div> -->
-            </a>
-        <%}%>
+<section class="student-section py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h1 class="fw-bold text-primary mb-3">Our student Network</h1>
+      <p class="text-muted">Explore professionals who once walked your path — connect, collaborate, and grow together.</p>
     </div>
-</body>
-</html>
+
+    <!-- Search and Filter -->
+    <!-- <div class="search-filter mb-4" data-aos="fade-up">
+      <form action="/student" method="GET" class="d-flex flex-wrap justify-content-center gap-3">
+        <input type="text" name="q" class="form-control search-input" placeholder="Search student by name, company..." style="max-width: 350px;">
+        <select class="form-select" name="industry" style="max-width: 200px;">
+          <option value="">All Industries</option>
+          <option>Technology</option>
+          <option>Finance</option>
+          <option>Education</option>
+          <option>Healthcare</option>
+        </select>
+        <button type="submit" class="btn btn-gradient px-4">Search</button>
+      </form>
+    </div> -->
+
+    <!-- student Grid -->
+    <div class="row g-4 justify-content-center">
+      <% for (let student of students) { %>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10" data-aos="zoom-in" data-aos-delay="100">
+          <a href="/student/<%= student._id %>" class="text-decoration-none">
+            <div class="student-card shadow-sm">
+              <div class="student-image" style="display:flex; justify-content: center;">
+                <img src="<%= student.profilePic.url %>" alt="<%= student.name %>" class="img-fluid rounded-circle">
+              </div>
+              <div class="student-info text-center mt-3">
+                <h5 class="fw-semibold text-dark"><%= student.name %></h5>
+                <p class="text-muted mb-1"><i class="fa-solid fa-building"></i> <%= student.course || 'Independent' %></p>
+                <p class="text-primary small"><i class="fa-solid fa-user-tie"></i> <%= student.role || 'student' %></p>
+              </div><br><br>
+            </div>
+          </a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</section>

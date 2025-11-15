@@ -27,7 +27,11 @@
                     <b>Linkedin: </b><%= alumni.linkedin%><br>
                     <b>Github: </b><%= alumni.github%><br>
                     <b>Bio: </b><%= alumni.bio%><br>
-                </p>
+                    <form action="/privateChat">
+                      <button class="btn btn-primary chat-btn">Message</button>
+                    </form>
+                    
+          </p>
       </div>
 
       <% if(currUser && currUser._id.equals(alumni._id)) { %>

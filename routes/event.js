@@ -7,7 +7,7 @@ const {isLoggedIn,isAlumni}=require("../middleware.js");
 
 //index route
 router.get("/",isLoggedIn,async(req,res)=>{
-    const events= await Event.find();
+    const events= await Event.find().populate({path:"host",populate:{path:"name"}});
         res.render("event/index.ejs",{events});
 });
 

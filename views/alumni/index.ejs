@@ -1,57 +1,45 @@
-<%layout("/layouts/boilerplate")%>
-<body>
-    <h3>All Alumni</h3>
+<% layout("/layouts/boilerplate") %>
 
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
-  <% for(let alumni of alumnis){ %>
-    <div class="col">
-      <a href="/alumni/<%= alumni._id %>" class="text-decoration-none text-dark">
-        <div class="card shadow-sm flex-row" style="margin-bottom: 5rem;">
-          
-          <!-- Left: Image -->
-          <div class="col-5">
-            <img src="<%= alumni.profilePic.url %>" 
-                 class="img-fluid object-fit-cover image-icon" 
-                 alt="alumni" 
-                 >
-          </div>
-
-          <!-- Right: Text Content -->
-          <div class="col-7 d-flex align-items-center">
-            <div class="card-body">
-              <p class="card-text mb-1 text-muted">
-                <b><%= alumni.name %></b><br><br>
-                 <i class="fa-solid fa-building">  </i><%= alumni.company %><br><br>
-                 <i class="fa-solid fa-user-tie">  </i><%= alumni.role %><br><br>
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </a>
+<section class="alumni-section py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h1 class="fw-bold text-primary mb-3">Our Alumni Network</h1>
+      <p class="text-muted">Explore professionals who once walked your path — connect, collaborate, and grow together.</p>
     </div>
-  <% } %>
-</div>
 
+    <!-- Search and Filter -->
+    <!-- <div class="search-filter mb-4" data-aos="fade-up">
+      <form action="/alumni" method="GET" class="d-flex flex-wrap justify-content-center gap-3">
+        <input type="text" name="q" class="form-control search-input" placeholder="Search alumni by name, company..." style="max-width: 350px;">
+        <select class="form-select" name="industry" style="max-width: 200px;">
+          <option value="">All Industries</option>
+          <option>Technology</option>
+          <option>Finance</option>
+          <option>Education</option>
+          <option>Healthcare</option>
+        </select>
+        <button type="submit" class="btn btn-gradient px-4">Search</button>
+      </form>
+    </div> -->
 
-    <!-- <div class="row row-cols-lg-3 row-cols-md-1 row-cols-sm-1">
-<% for(let alumni of alumnis){%>
-    <div class="card" >
-  <img src="<%=alumni.profilePic.url%>" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><b><%=alumni.name%></b></h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    <!-- Alumni Grid -->
+    <div class="row g-4 justify-content-center">
+      <% for (let alumni of alumnis) { %>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10" data-aos="zoom-in" data-aos-delay="100">
+          <a href="/alumni/<%= alumni._id %>" class="text-decoration-none">
+            <div class="alumni-card shadow-sm">
+              <div class="alumni-image" style="display:flex; justify-content: center;">
+                <img src="<%= alumni.profilePic.url %>" alt="<%= alumni.name %>" class="img-fluid rounded-circle">
+              </div>
+              <div class="alumni-info text-center mt-3">
+                <h5 class="fw-semibold text-dark"><%= alumni.name %></h5>
+                <p class="text-muted mb-1"><i class="fa-solid fa-building"></i> <%= alumni.company || 'Independent' %></p>
+                <p class="text-primary small"><i class="fa-solid fa-user-tie"></i> <%= alumni.role || 'Alumni' %></p>
+              </div><br><br>
+            </div>
+          </a>
+        </div>
+      <% } %>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%=alumni.comapany%></li>
-    <li class="list-group-item"><%=alumni.position%></li>
-    <li class="list-group-item"><%=alumni.experience%></li>
-  </ul>
-  <div class="card-body">
-    <a href="/alumni/<%=alumni._id%>" class="card-link">See more</a>
-  </div>
-</div>
- <%}%>
- </div> -->
-</body>
-</html>
+</section>

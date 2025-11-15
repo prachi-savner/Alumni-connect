@@ -79,16 +79,24 @@ app.get("/",(req,res)=>{
 });
 
 // Middleware for EJS user
-app.use((req, res, next) => {
-  res.locals.currUser = req.user;
-  next();
-});
+// app.use((req, res, next) => {
+//   res.locals.currUser = req.user;
+//   next();
+// });
 
 // Chat route
 app.get("/chat", async (req, res) => {
 // const msg=await Message.find();
   const users = await User.find({ _id: { $ne: req.user._id } });
   res.render("chat.ejs", { user: req.user, users });
+});
+
+// Chat route
+app.get("/privateChat", async (req, res) => {
+// const msg=await Message.find();
+  let {id}=req.params;
+  const receiver = await User.findById(id);
+  res.render("chat2.ejs", { user: req.user, receiver });
 });
 
 // SOCKET.IO SECTION
