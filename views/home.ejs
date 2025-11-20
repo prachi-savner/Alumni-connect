@@ -1,24 +1,33 @@
 <% layout("/layouts/boilerplate") %>
+<section class="hero-section d-flex align-items-center">
+  <div class="container py-5">
+    <div class="row align-items-center justify-content-between">
 
-<!-- Hero Section -->
-<section class="hero d-flex align-items-center justify-content-center text-center text-white position-relative overflow-hidden">
-  <div class="overlay"></div>
-  <div class="container position-relative z-2" data-aos="fade-up">
-    <h1 class="display-3 fw-bold mb-3 text-primary">Alumni Connect</h1>
-    <p class="lead mb-4 text-primary">Empowering connections between alumni and students — where mentorship meets opportunity.</p>
+      <!-- LEFT CONTENT -->
+      <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+        <h1 class="display-4 fw-bold text-primary">Alumni Connect</h1>
+        <p class="lead text-muted">
+          Empowering connections between alumni and students — 
+          where mentorship meets opportunity.
+        </p>
 
-    <% if (!currUser) { %>
-      <a href="/signup" class="btn btn-gradient btn-lg px-4">Get Started</a>
-    <% } else { %>
-      <a href="/alumni" class="btn btn-gradient btn-lg px-4">Explore Alumni</a>
-    <% } %>
+        <% if (!currUser) { %>
+          <a href="/signup" class="btn btn-gradient btn-lg mt-3">Get Started</a>
+        <% } else { %>
+          <a href="/alumni" class="btn btn-gradient btn-lg mt-3">Explore Alumni</a>
+        <% } %>
+      </div>
+
+      <!-- RIGHT SIDE IMAGE -->
+      <div class="col-lg-6 text-center" data-aos="fade-left">
+        <div class="hero-img-wrapper">
+          <img src="/hero.jpg" class="hero-right-img" alt="Hero Image">
+        </div>
+      </div>
+
+    </div>
   </div>
-
-  <!-- Floating background shapes -->
-  <div class="floating-shape shape-1"></div>
-  <div class="floating-shape shape-2"></div>
 </section>
-
 
 <!-- About Section -->
 <section class="about-section py-5 bg-light position-relative">
@@ -73,5 +82,4 @@
     </div>
   </div>
 </section>
-
 
