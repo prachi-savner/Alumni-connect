@@ -74,8 +74,9 @@ const userSchema = new Schema({
 
   createdAt: {
      type: Date,
-      default: Date.now
+      default: Date.now()
      }
+     
 });
 
 userSchema.plugin(passportLocalMongoose,{ usernameField: "name" });

@@ -28,3 +28,22 @@ module.exports.isOwner =async (req,res,next)=>{
     }
     next();
 };
+module.exports.isAdmin = (req, res, next) => {
+    if (!req.isAuthenticated() || req.user.role !== "admin") {
+        req.flash("error", "You are not authorized to access admin panel");
+        return res.redirect("/");
+    }
+    next();
+};
+
+
+module.exports.isVerified = (req, res, next) => {
+    if(req.user.role=="admin"){
+        req.user.verified=true;
+    }
+    if (!req.user.verified) {
+        req.flash("error", "Your account is pending admin approval.");
+        return res.redirect("/pending-approval");
+    }
+    next();
+};

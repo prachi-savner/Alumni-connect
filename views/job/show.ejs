@@ -14,11 +14,12 @@
         </div>
 
         <%if(currUser && currUser._id.equals(job.postedBy._id)){%>
-<div class="row mt-3">
-    <div class="btns">
-    <a class="btn btn-dark col-1 offset-3 edit-btn" href="/job/<%=job._id%>/edit"> Edit</a>
-    <form method="POST" action="/job/<%=job._id%>?_method=DELETE">
-        <button class="btn btn-dark offset-5">Delete</button>
+<div class="row col-6 offset-3 mt-3">
+    
+    <div class="btns" style="display: flex; ">
+    <a class="btn btn-dark col-1 offset-3 edit-btn" href="/job/<%=job._id%>/edit" style="display:flex;justify-content: center; margin-left: 0;"> Edit</a>
+    <form method="POST" action="/job/<%=job._id%>?_method=DELETE" >
+        <button class="btn btn-dark"style="margin-left: 2rem; height:100%">Delete</button>
     </form>
     </div>
  </div>

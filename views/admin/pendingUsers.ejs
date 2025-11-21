@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pending Verifications</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<div class="ml-64 p-8">
+
+  <h1 class="text-3xl font-semibold mb-6">Pending User Verifications</h1>
+
+  <div class="bg-white p-6 shadow rounded-xl">
+
+    <table class="w-full text-left">
+      <thead>
+        <tr class="border-b">
+          <th class="py-3">Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% pendingUsers.forEach(u => { %>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="py-3"><%= u.name %></td>
+            <td><%= u.email %></td>
+            <td class="capitalize"><%= u.role %></td>
+
+            <td class="flex gap-3">
+
+              <!-- Approve Button -->
+              <form action="/admin/verify/<%= u._id %>?_method=PUT" method="POST">
+                <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
+                  Approve
+                </button>
+              </form>
+
+              <!-- Reject Button -->
+              <form action="/admin/reject/<%= u._id %>?_method=DELETE" method="POST">
+                <button class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700">
+                  Reject
+                </button>
+              </form>
+
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+</body>
+</html>

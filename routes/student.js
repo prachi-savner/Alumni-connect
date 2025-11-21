@@ -3,7 +3,10 @@ const router=express.Router();
 const User = require("../models/user");
 const wrapAsync=require("../utils/wrapAsync.js");
 const ExpressError=require("../utils/ExpressError.js");
-const {isLoggedIn,isOwner}=require("../middleware.js");
+const {isLoggedIn,isOwner,isVerified}=require("../middleware.js");
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+
 //student profile
 router.get("/",isLoggedIn,wrapAsync(async (req,res)=>{
     const students= await User.find({role:"student"});
@@ -22,7 +25,7 @@ router.get("/:id",isLoggedIn,wrapAsync(async (req,res)=>{
 }));
 
 //edit route
-router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(async (req,res)=>{
+router.get("/:id/edit",isLoggedIn,isOwner,isVerified,wrapAsync(async (req,res)=>{
     const {id}=req.params;
     const student=await User.findById(id);
     if(!student){
@@ -33,18 +36,19 @@ router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(async (req,res)=>{
 }));
 
 //update route
-router.put("/:id",isLoggedIn,isOwner,wrapAsync(async (req,res)=>{
+router.put("/:id",isLoggedIn,isOwner,isVerified,upload.single('student[profilePic][url]'),wrapAsync(async (req,res)=>{
     if(!req.body.student){
         throw new ExpressError(400,"Send valid data for listing");
     }
     const {id}=req.params;
      await User.findByIdAndUpdate(id,{...req.body.student});
      req.flash("success","user updated successfully");
-     res.redirect(`/student/${id}`)
+    //  res.redirect(`/student/${id}`)
+    res.send(req.file);
 }));
 
 //delete route
-router.delete("/:id",isLoggedIn,isOwner,wrapAsync(async (req,res)=>{
+router.delete("/:id",isLoggedIn,isOwner,isVerified,wrapAsync(async (req,res)=>{
     const {id}=req.params;
      let deletedUser=await User.findByIdAndDelete(id);
      console.log(deletedUser);

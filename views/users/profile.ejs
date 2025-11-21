@@ -1,5 +1,8 @@
 <% layout('/layouts/boilerplate') %>
-
+<div class="section-card fade-up"  style="height: 10rem; margin-top: 3rem; background-color: rgb(212, 230, 249);">
+    <p style="font-size:3rem; display:flex;  justify-content: center;">Welcome <%=user.name%></p>
+    
+  </div>
 <div class="profile-container fade-up">
   <div style="display:flex; justify-content:space-between">
       <h1 class="profile-title">My Profile</h1>
@@ -15,7 +18,12 @@
       <div class="profile-info">
         <h2 class="name"><%= user.name %></h2>
         <p><i class="fa fa-envelope"></i> <%= user.email %></p>
-        <p><i class="fa fa-laptop-code"></i> <%= user.course %> • <%= user.year %></p>
+       <% if(currUser.role=="student"){%>
+          <p><i class="fa fa-laptop-code"></i>  <%= user.course %> &nbsp;•&nbsp; <%= user.year %></p>
+        <%}%>
+        <%if(currUser.role="alumni"){%>
+          <p><i class="fa fa-laptop-code"></i>  <%= user.company %> &nbsp;•&nbsp; <%= user.position %></p>
+        <%}%>
         <p><i class="fa fa-map-marker-alt"></i> <%= user.location %></p>
       </div>
     </div>

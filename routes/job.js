@@ -3,7 +3,7 @@ const express=require("express");
 const router=express.Router();
 const wrapAsync=require("../utils/wrapAsync.js");
 const Job = require("../models/job");
-const {isLoggedIn,isAlumni}=require("../middleware.js");
+const {isLoggedIn,isAlumni,isVerified}=require("../middleware.js");
 
 //index route
 router.get("/",isLoggedIn,async(req,res)=>{
@@ -41,7 +41,7 @@ router.get("/:id",isLoggedIn,wrapAsync(async (req,res)=>{
 
 
 //edit route
-router.get("/:id/edit",isLoggedIn,wrapAsync(async (req,res)=>{
+router.get("/:id/edit",isLoggedIn,isVerified,wrapAsync(async (req,res)=>{
     const {id}=req.params;
     const job=await Job.findById(id);
     console.log(job);
@@ -53,7 +53,7 @@ router.get("/:id/edit",isLoggedIn,wrapAsync(async (req,res)=>{
 }));
 
 //update route
-router.put("/:id",isLoggedIn,wrapAsync(async (req,res)=>{
+router.put("/:id",isLoggedIn,isVerified,wrapAsync(async (req,res)=>{
     if(!req.body.job){
         throw new ExpressError(400,"Send valid data for job");
     }
@@ -64,7 +64,7 @@ router.put("/:id",isLoggedIn,wrapAsync(async (req,res)=>{
 }));
 
 //delete route
-router.delete("/:id",isLoggedIn,wrapAsync(async (req,res)=>{
+router.delete("/:id",isLoggedIn,isVerified,wrapAsync(async (req,res)=>{
     const {id}=req.params;
      let deletedJob=await Job.findByIdAndDelete(id);
      console.log(deletedJob);

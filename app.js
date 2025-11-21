@@ -1,3 +1,6 @@
+if(process.env.NODE_ENV!="production"){
+require("dotenv").config();
+}
 const express=require("express");
 const app=express();
 const path=require("path");
@@ -16,6 +19,7 @@ const session=require("express-session");
 const flash=require("connect-flash");
 const User = require("./models/user");
 const ExpressError=require("./utils/ExpressError.js");
+const adminRoutes = require("./routes/admin");
 
 const Message = require("./models/message");
 const http = require("http");
@@ -162,8 +166,11 @@ app.use("/job",jobRouter);
 app.use("/",userRouter);
 app.use("/event",eventRouter);
 app.use("/profile",profileRouter);
+app.use("/admin", adminRoutes);
 
-
+app.get("/pending-approval", (req, res) => {
+    res.render("admin/pending-approval.ejs");
+});
 
 app.use((req,res,next)=>{
      next(new ExpressError(404,"Page not found!!"));

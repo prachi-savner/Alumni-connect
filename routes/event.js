@@ -3,21 +3,21 @@ const express=require("express");
 const router=express.Router();
 const wrapAsync=require("../utils/wrapAsync.js");
 const Event = require("../models/event");
-const {isLoggedIn,isAlumni}=require("../middleware.js");
+const {isLoggedIn,isAlumni,isVerified}=require("../middleware.js");
 
 //index route
-router.get("/",isLoggedIn,async(req,res)=>{
+router.get("/",isLoggedIn,isVerified,async(req,res)=>{
     const events= await Event.find().populate({path:"host",populate:{path:"name"}});
         res.render("event/index.ejs",{events});
 });
 
 //new event 
 
-router.get("/new",isLoggedIn,isAlumni,(req,res)=>{
+router.get("/new",isLoggedIn,isAlumni,isVerified,(req,res)=>{
     res.render("event/new.ejs");
 });
 
-router.post("/new",isLoggedIn,isAlumni,wrapAsync(async (req,res,next)=>{
+router.post("/new",isLoggedIn,isAlumni,isVerified,wrapAsync(async (req,res,next)=>{
     let event=req.body.event;
     const newEvent=new Event(event);
     req.flash("success","event created successfully");
@@ -28,7 +28,7 @@ router.post("/new",isLoggedIn,isAlumni,wrapAsync(async (req,res,next)=>{
 }));
 
 //show event 
-router.get("/:id",isLoggedIn,wrapAsync(async (req,res)=>{
+router.get("/:id",isLoggedIn,isVerified,wrapAsync(async (req,res)=>{
     const {id}=req.params;
     const event=await Event.findById(id);
     console.log(event);

@@ -2,7 +2,7 @@
     <div class="row mt-3">
         <div class="col-8 offset-2">
             <h3>Edit your profile</h3>
-    <form method="POST" action="/student/<%=student._id%>?_method=PUT" novalidate class="needs-validation">
+    <form method="POST" action="/student/<%=student._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="name" class="form-label">name</label>
             <input name="student[name]"value="<%=student.name%>" type="text" class="form-control"required>
@@ -13,7 +13,7 @@
         </div>
         <div class="mb-3">
             <label for="profilePic" class="form-label">Image Link</label>
-            <input name="student[profilePic][url]"  value="<%=student.profilePic.url%>"  type="text" class="form-control" >
+            <input name="student[profilePic][url]"  value="<%=student.profilePic.url%>"  type="file" class="form-control" >
         </div>
         <div class="row">
             <div class="mb-3 col-md-4">
