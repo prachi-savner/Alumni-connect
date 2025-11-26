@@ -9,8 +9,8 @@ module.exports.isLoggedIn=(req,res,next)=>{
 }
 
 module.exports.isAlumni=(req,res,next)=>{
-    if(res.locals.currUser.role!="alumni"){
-        req.flash("error","You must be an alumni!");
+    if(res.locals.currUser.role==="student"){
+        req.flash("error","You don't have permission!");
         return res.redirect("/job");
     }
     next();

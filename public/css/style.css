@@ -137,6 +137,7 @@ h3{
   background-color: #000; /* black background */
   color: #fff;
   font-family: "Plus Jakarta Sans", sans-serif;
+  width: 100%;
 }
 
 .footer h5,

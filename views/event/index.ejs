@@ -4,7 +4,7 @@
   <div class="container py-4">
     <h2 class="fw-bold mb-4 text-primary">Event & Internship Opportunities</h2>
 
-    <% if (currUser && currUser.role === "alumni") { %>
+    <% if (currUser && currUser.role !== "student") { %>
       <form action="/event/new" method="GET" class="mb-4">
         <button class="btn btn-dark">+ Add New Event</button>
       </form>
@@ -21,13 +21,13 @@
                 <i class="fa-solid fa-building"></i> <%= event.description %>
             </p>
             <p class="text-muted mb-3">
-                <i class="fa-solid fa-location-dot"></i> <%= event.date %>
+                <i class="fa-regular fa-calendar"></i> <%= event.date.toLocaleDateString() %>
             </p>
             <p class="text-muted mb-1">
                 <i class="fa-solid fa-location-dot"></i> <%= event.place %>
             </p>
             <p class="text-muted mb-3">
-                <i class="fa-solid fa-location-dot"></i> <%= event.host.name %>
+                <i class="fa-solid fa-circle-user"></i><%= event.host ? event.host.name : "Host Not Available" %>
             </p>
 
 

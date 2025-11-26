@@ -4,11 +4,10 @@ const User = require("../models/user");
 const wrapAsync=require("../utils/wrapAsync.js");
 const ExpressError=require("../utils/ExpressError.js");
 const {isLoggedIn,isOwner,isAdmin}=require("../middleware.js");
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' });
+const multer  = require('multer');
 
-
-
+const {storage}=require("../cloudConfig.js");
+const upload = multer({ storage });
 
 
 
@@ -25,12 +24,18 @@ router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(async (req,res)=>{
 }));
 
 //update route
-router.put("/:id",isLoggedIn,isOwner,upload.single("admin[profilePic][url]"),wrapAsync(async (req,res)=>{
+router.put("/:id",isLoggedIn,isOwner,upload.single("admin[profilePic]"),wrapAsync(async (req,res)=>{
     if(!req.body.admin){
         throw new ExpressError(400,"Send valid data for listing");
     }
     const {id}=req.params;
-     await User.findByIdAndUpdate(id,{...req.body.admin});
+    let user= await User.findByIdAndUpdate(id,{...req.body.admin});
+     let url=req.file.path;
+    let filename=req.file.filename;
+    user.profilePic={
+        url,filename
+    }
+    await user.save();
      req.flash("success","admin updated successfully");
      res.redirect(`/admin/${id}`)
 }));

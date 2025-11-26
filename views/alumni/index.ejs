@@ -1,6 +1,6 @@
 <% layout("/layouts/boilerplate") %>
 
-<section class="alumni-section py-5">
+<section class="profile-section py-5">
   <div class="container">
     <div class="text-center mb-5" data-aos="fade-up">
       <h1 class="fw-bold text-primary mb-3">Our Alumni Network</h1>
@@ -23,12 +23,12 @@
     </div> -->
 
     <!-- Alumni Grid -->
-    <div class="row g-4 justify-content-center">
+    <div class="row g-5 justify-content-center">
       <% for (let alumni of alumnis) { %>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-10" data-aos="zoom-in" data-aos-delay="100">
           <a href="/alumni/<%= alumni._id %>" class="text-decoration-none">
-            <div class="alumni-card shadow-sm">
-              <div class="alumni-image" style="display:flex; justify-content: center;">
+            <div class="profile-card shadow-sm">
+              <div class="profile-image" style="display:flex; justify-content: center;">
                 <img src="<%= alumni.profilePic.url %>" alt="<%= alumni.name %>" class="img-fluid rounded-circle">
               </div>
               <div class="alumni-info text-center mt-3">

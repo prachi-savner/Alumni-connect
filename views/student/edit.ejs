@@ -13,7 +13,7 @@
         </div>
         <div class="mb-3">
             <label for="profilePic" class="form-label">Image Link</label>
-            <input name="student[profilePic][url]"  value="<%=student.profilePic.url%>"  type="file" class="form-control" >
+            <input name="student[profilePic]"  type="file" class="form-control" >
         </div>
         <div class="row">
             <div class="mb-3 col-md-4">
@@ -21,7 +21,7 @@
             <input name="student[year]" value="<%=student.year%>" type="text" class="form-control" required>
             </div>
         
-           <div class="mb-3">
+           <div class="mb-3 col-md-8">
             <label for="company" class="form-label">Course</label>
             <input name="student[course]" class="form-control" required value="<%=student.course%>">
         </div>

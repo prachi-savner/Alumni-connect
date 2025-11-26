@@ -5,14 +5,14 @@ body {
 }
 
 /* Section Styling */
-.alumni-section {
+.profile-section {
   min-height: 100vh;
 }
 
 
 
 /* Alumni Card */
-.alumni-card {
+.profile-card {
   background: rgba(255,255,255,0.9);
   border-radius: 20px;
   padding: 2rem 1rem;
@@ -24,12 +24,12 @@ body {
   border: 1px solid rgba(255,255,255,0.2);
 }
 
-.alumni-card:hover {
+.profile-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.alumni-image img {
+.profile-image img {
   height: 130px;
   width: 130px;
   object-fit: cover;
@@ -38,7 +38,7 @@ body {
 }
 
 /* Hover Overlay */
-.alumni-hover {
+.profile-hover {
   position: absolute;
   top: 0;
   left: 0;

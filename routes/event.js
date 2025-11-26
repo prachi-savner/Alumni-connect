@@ -8,6 +8,7 @@ const {isLoggedIn,isAlumni,isVerified}=require("../middleware.js");
 //index route
 router.get("/",isLoggedIn,isVerified,async(req,res)=>{
     const events= await Event.find().populate({path:"host",populate:{path:"name"}});
+    console.log(events);
         res.render("event/index.ejs",{events});
 });
 

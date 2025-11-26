@@ -4,8 +4,10 @@ const User = require("../models/user");
 const wrapAsync=require("../utils/wrapAsync.js");
 const ExpressError=require("../utils/ExpressError.js");
 const {isLoggedIn,isOwner,isVerified}=require("../middleware.js");
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const multer  = require('multer');
+ const {storage}=require("../cloudConfig");
+const upload = multer({storage});
+
 //alumni profile
 router.get("/",isLoggedIn,isVerified,wrapAsync(async (req,res)=>{
     const alumnis= await User.find({role:"alumni"});
@@ -26,6 +28,7 @@ router.get("/:id",isLoggedIn,isVerified,wrapAsync(async (req,res)=>{
 
 //edit route
 router.get("/:id/edit",isLoggedIn,isOwner,isVerified,wrapAsync(async (req,res)=>{
+    
     const {id}=req.params;
     const alumni=await User.findById(id);
     console.log(alumni);
@@ -37,14 +40,24 @@ router.get("/:id/edit",isLoggedIn,isOwner,isVerified,wrapAsync(async (req,res)=>
 }));
 
 //update route
-router.put("/:id",isLoggedIn,isOwner,isVerified,upload.single("alumni[profilePic][url]"),wrapAsync(async (req,res)=>{
+router.put("/:id",isLoggedIn,isOwner,isVerified,upload.single("alumni[profilePic]"),wrapAsync(async (req,res)=>{
+  
     if(!req.body.alumni){
-        throw new ExpressError(400,"Send valid data for listing");
+        throw new ExpressError(400,"Send valid data");
     }
     const {id}=req.params;
-     await User.findByIdAndUpdate(id,{...req.body.alumni});
+
+    console.log("image received")
+     let user=await User.findByIdAndUpdate(id,{...req.body.alumni});
+       let url=req.file.path;
+    let filename=req.file.filename;
+    user.profilePic={
+        url,filename
+    }
+    await user.save();
      req.flash("success","alumni updated successfully");
      res.redirect(`/alumni/${id}`)
+    
 }));
 
 //delete route

@@ -24,7 +24,7 @@ const userSchema = new Schema({
   profilePic: {
     filename: {
       type: String,
-      default: "listingimage"
+      default: "profileImage"
     },
     url: {
       type: String,
