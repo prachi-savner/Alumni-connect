@@ -10,7 +10,8 @@ const upload = multer({storage});
 
 //alumni profile
 router.get("/",isLoggedIn,isVerified,wrapAsync(async (req,res)=>{
-    const alumnis= await User.find({role:"alumni"});
+    const alumnis = await User.find({ role: "alumni" }).sort({ createdAt: -1 });
+
     res.render("alumni/index.ejs",{alumnis});
 }));
 
@@ -49,12 +50,15 @@ router.put("/:id",isLoggedIn,isOwner,isVerified,upload.single("alumni[profilePic
 
     console.log("image received")
      let user=await User.findByIdAndUpdate(id,{...req.body.alumni});
-       let url=req.file.path;
+    
+      if(req.file){
+         let url=req.file.path;
     let filename=req.file.filename;
     user.profilePic={
         url,filename
     }
     await user.save();
+      }
      req.flash("success","alumni updated successfully");
      res.redirect(`/alumni/${id}`)
     

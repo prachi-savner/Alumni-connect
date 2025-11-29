@@ -14,6 +14,10 @@ router.post("/signup",wrapAsync(async(req,res)=>{
      let {name,email,password,role}=req.body;
     const newUser=new User({email,name,role});
     const registerUser=await User.register(newUser,password);
+    if(registerUser.role=="admin"){
+        registerUser.verified=true;
+        await registerUser.save();
+    }
     console.log(registerUser);
     req.login(registerUser,(err)=>{
         if(err){

@@ -28,8 +28,10 @@ const server = http.createServer(app);
 
 const io = new Server(server);
 
-const MONGO_URL="mongodb://127.0.0.1:27017/alumni_connect";
+// const MONGO_URL="mongodb://127.0.0.1:27017/alumni_connect";
 
+
+const dbUrl= process.env.ATLASDB_URL;
 main().then(()=>{
     console.log("connected to db");
 }).catch((err)=>{
@@ -37,7 +39,7 @@ main().then(()=>{
 });
 
 async function main(){
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(dbUrl);
 }
 
 

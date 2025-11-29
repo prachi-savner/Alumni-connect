@@ -205,3 +205,7 @@ h3{
 i{
   opacity: 0.8;
 }
+
+.navbar i{
+  opacity: 1;
+}

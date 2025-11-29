@@ -26,16 +26,18 @@ router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(async (req,res)=>{
 //update route
 router.put("/:id",isLoggedIn,isOwner,upload.single("admin[profilePic]"),wrapAsync(async (req,res)=>{
     if(!req.body.admin){
-        throw new ExpressError(400,"Send valid data for listing");
+        throw new ExpressError(400,"Send valid data");
     }
     const {id}=req.params;
     let user= await User.findByIdAndUpdate(id,{...req.body.admin});
-     let url=req.file.path;
+    if(req.file){
+         let url=req.file.path;
     let filename=req.file.filename;
     user.profilePic={
         url,filename
     }
     await user.save();
+      }
      req.flash("success","admin updated successfully");
      res.redirect(`/admin/${id}`)
 }));
@@ -55,8 +57,6 @@ router.get("/dashboard", isAdmin, async (req, res) => {
     const totalAlumni = await User.countDocuments({ role: "alumni" });
     const totalStudents = await User.countDocuments({ role: "student" });
     const totalAdmins = await User.countDocuments({ role: "admin" });
-
-    //const totalMessages = await Message.countDocuments();  // if you have chat
 
     // Recent 5 users
     const recentUsers = await User.find({})

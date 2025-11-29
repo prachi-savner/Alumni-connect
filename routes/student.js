@@ -45,12 +45,14 @@ router.put("/:id",isLoggedIn,isOwner,isVerified,upload.single('student[profilePi
     }
     const {id}=req.params;
      let user=await User.findByIdAndUpdate(id,{...req.body.student});
-     let url=req.file.path;
+     if(req.file){
+         let url=req.file.path;
     let filename=req.file.filename;
     user.profilePic={
         url,filename
     }
     await user.save();
+      }
      req.flash("success","user updated successfully");
     //  res.redirect(`/student/${id}`)
     res.send(req.file);
