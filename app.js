@@ -28,10 +28,10 @@ const server = http.createServer(app);
 
 const io = new Server(server);
 
-// const MONGO_URL="mongodb://127.0.0.1:27017/alumni_connect";
+const dbUrl="mongodb://127.0.0.1:27017/alumni_connect";
 
 
-const dbUrl= process.env.ATLASDB_URL;
+// const dbUrl= process.env.ATLASDB_URL;
 main().then(()=>{
     console.log("connected to db");
 }).catch((err)=>{

@@ -1,7 +1,7 @@
 <%layout("/layouts/boilerplate")%>
 
 
-        <div class="card col-6 offset-3 jobs ">
+        <div class="card col-5 offset-4 other-cards">
                 <p class="card-text">
                     <b>Job Title: </b><%= job.title%><br>
                     <b>Description: </b><%= job.description%><br>
@@ -14,10 +14,10 @@
         </div>
 
         <%if(currUser && currUser._id.equals(job.postedBy._id)){%>
-<div class="row col-6 offset-3 mt-3">
+<div class="row col-6 offset-4 mt-3">
     
     <div class="btns" style="display: flex; ">
-    <a class="btn btn-dark col-1 offset-3 edit-btn" href="/job/<%=job._id%>/edit" style="display:flex;justify-content: center; margin-left: 0;"> Edit</a>
+    <a class="btn btn-dark col-1 offset-3 edit-btn" href="/job/<%=job._id%>/edit" style="display:flex;justify-content: center; margin-left: 0; width: auto;"> Edit</a>
     <form method="POST" action="/job/<%=job._id%>?_method=DELETE" >
         <button class="btn btn-dark"style="margin-left: 2rem; height:100%">Delete</button>
     </form>

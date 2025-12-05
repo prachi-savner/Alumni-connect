@@ -32,10 +32,11 @@
                 <img src="<%= alumni.profilePic.url %>" alt="<%= alumni.name %>" class="img-fluid rounded-circle">
               </div>
               <div class="alumni-info text-center mt-3">
-                <h5 class="fw-semibold text-dark"><%= alumni.name %></h5>
-                <p class="text-muted mb-1"><i class="fa-solid fa-building"></i> <%= alumni.company || 'Independent' %></p>
-                <p class="text-primary small"><i class="fa-solid fa-user-tie"></i> <%= alumni.role || 'Alumni' %></p>
-              </div><br><br>
+  <h5><%= alumni.name %></h5>
+  <p class="company"><%= alumni.company || 'Independent' %></p>
+  <p class="role"><%= alumni.role || 'Alumni' %></p>
+</div>
+
             </div>
           </a>
         </div>

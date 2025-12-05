@@ -1,2 +1,42 @@
 <%layout("/layouts/boilerplate")%>
-<h3>edit job</h3>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+            <h3>Edit your profile</h3>
+    <form method="POST" action="/job/<%=job._id%>?_method=PUT" novalidate class="needs-validation">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label> 
+            <input name="job[title]"value="<%=job.title%>" type="text" class="form-control"required>
+        </div>
+
+        
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="job[description]" type="text" class="form-control" required><%=job.description%></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="company" class="form-label">Company</label>
+            <input name="job[company]" class="form-control" required value="<%=job.company%>">
+        </div>
+        
+        <div class="mb-3 ">
+            <label for="position" class="form-label">position</label>
+            <input name="job[position]" value="<%=job.position%>" type="text" class="form-control" required>
+        </div>
+
+        <div class="mb-3 ">
+            <label for="type" class="form-label">Type</label>
+            <input name="job[type]" value="<%=job.type%>" type="text" class="form-control" required>
+        </div>
+    
+        <div class="mb-3">
+            <label for="skills" class="form-label">skills</label>
+            <input name="job[skills]" class="form-control" required value="<%=job.skills%>">
+        </div>
+        
+        <button class="btn btn-dark edit-btn mt-3">Save Changes</button>
+        <br><br>
+    </form> 
+        </div>
+    </div>
+  

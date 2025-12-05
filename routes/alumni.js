@@ -47,8 +47,6 @@ router.put("/:id",isLoggedIn,isOwner,isVerified,upload.single("alumni[profilePic
         throw new ExpressError(400,"Send valid data");
     }
     const {id}=req.params;
-
-    console.log("image received")
      let user=await User.findByIdAndUpdate(id,{...req.body.alumni});
     
       if(req.file){

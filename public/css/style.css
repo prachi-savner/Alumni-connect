@@ -74,9 +74,11 @@ body{
 } */
 
 /* jobs */
-.jobs{
-    margin-top: 2rem;
-    padding: 1rem;
+.other-cards{
+    margin-top: 4rem;
+    padding: 2rem;
+    border-radius: 3rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 .job-content{
     /* display: flex;
