@@ -6,7 +6,7 @@ const Job = require("../models/job");
 const {isLoggedIn,isAlumni,isVerified}=require("../middleware.js");
 
 //index route
-router.get("/",isLoggedIn,async(req,res)=>{
+router.get("/",isLoggedIn,isVerified,async(req,res)=>{
     const jobs= await Job.find();
         res.render("job/index.ejs",{jobs});
 });

@@ -3,7 +3,7 @@
 
 <!-- <div class="container mt-5 mb-5"> -->
   <div class="row justify-content-center mt-4">
-    <div class="col-md-6 text-center profile-card">
+    <div class="col-md-4 text-center profile-card">
 
       <!-- Profile Image -->
       <img 
@@ -31,7 +31,7 @@
       </div>
 
       <% if(currUser && currUser._id.equals(alumni._id)) { %>
-        <div class="mt-4 d-flex justify-content-center gap-3">
+        <div class="mt-4 d-flex justify-content-center gap-3 mb-3">
           <a href="/alumni/<%= alumni._id %>/edit" class="btn btn-dark px-4">Edit</a>
           <form method="POST" action="/alumni/<%= alumni._id %>?_method=DELETE">
             <button class="btn btn-danger px-4">Delete</button>

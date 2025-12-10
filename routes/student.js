@@ -11,7 +11,7 @@ const upload = multer({ storage});
 
 
 //student profile
-router.get("/",isLoggedIn,wrapAsync(async (req,res)=>{
+router.get("/",isLoggedIn,isVerified,wrapAsync(async (req,res)=>{
     const students= await User.find({role:"student"}).sort({ createdAt: -1 });
     res.render("student/index.ejs",{students});
 }));

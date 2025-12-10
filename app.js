@@ -20,7 +20,7 @@ const flash=require("connect-flash");
 const User = require("./models/user");
 const ExpressError=require("./utils/ExpressError.js");
 const adminRoutes = require("./routes/admin");
-
+const { isVerified } = require("./middleware.js");
 const Message = require("./models/message");
 const http = require("http");
 const { Server } = require("socket.io");
@@ -91,7 +91,7 @@ app.get("/",(req,res)=>{
 // });
 
 // Chat route
-app.get("/chat", async (req, res) => {
+app.get("/chat",isVerified, async (req, res) => {
 // const msg=await Message.find();
   const users = await User.find({ _id: { $ne: req.user._id } });
   res.render("chat.ejs", { user: req.user, users });

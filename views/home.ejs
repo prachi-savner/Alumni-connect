@@ -1,62 +1,58 @@
 <% layout("/layouts/boilerplate") %>
-<section class="hero-section d-flex align-items-center">
-  <div class="container py-5">
-    <div class="row align-items-center justify-content-between">
+<!-- <section class="hero-section d-flex align-items-center"> -->
+  <br><br>
 
-      <!-- LEFT CONTENT -->
-      <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-        <h1 class="display-4 fw-bold text-primary">Alumni Connect</h1>
-        <p class="lead text-muted">
-          Empowering connections between alumni and students — 
-          where mentorship meets opportunity.
-        </p>
-
-        <% if (!currUser) { %>
-          <a href="/signup" class="btn btn-primary btn-lg mt-3">Get Started</a>
-        <% } else { %>
-          <a href="/alumni" class="btn btn-primary btn-lg mt-3">Explore Alumni</a>
-        <% } %>
-      </div>
-
-      <!-- RIGHT SIDE IMAGE -->
-      <div class="col-lg-6 text-center" data-aos="fade-left">
-        <div class="hero-img-wrapper">
-          <img src="/hero.jpg" class="hero-right-img" alt="Hero Image">
+  <div class="container-fluid p-5"> 
+    <div class="row align-items-center justify-content-between"> 
+      <!-- LEFT CONTENT --> 
+       <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right"> 
+        <h1 class="display-4 fw-bold ">Alumni Connect</h1>
+         <p class="lead"> Empowering connections between alumni and students — where mentorship meets opportunity. </p>
+          <% if (!currUser) { %> 
+            <a href="/signup" class="btn btn-primary btn-lg mt-3">Get Started</a>
+          <% } else { %>
+              <a href="/alumni" class="btn btn-primary btn-lg mt-3">Explore Alumni</a>
+            <% } %>
+        </div> 
+        <!-- RIGHT SIDE IMAGE --> 
+        <div class="col-lg-6 text-center" data-aos="fade-left"> 
+            <div class="hero-img-wrapper">
+               <img src="/hero.jpg" class="hero-right-img" alt="Hero Image"> 
+            </div>
         </div>
-      </div>
+    </div> 
+  </div> 
+<!-- </section> -->
 
-    </div>
-  </div>
-</section>
-
+<br><br>  
 <!-- About Section -->
-<section class="about-section py-5 bg-light position-relative">
-  <div class="container">
+<!-- <section class="about-section py-5 bg-light position-relative"> -->
+  <div class="container-fluid">
     <div class="row align-items-center g-5">
       <div class="col-lg-6" data-aos="fade-right">
         <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&q=80" 
              class="rounded-5 shadow-lg about-img" alt="Alumni Connect">
       </div>
       <div class="col-lg-6" data-aos="fade-left">
-        <h2 class="fw-bold text-primary mb-3">About Alumni Connect</h2>
-        <p class="text-muted fs-5">
+        <h2 class="fw-bold mb-3">About Alumni Connect</h2>
+        <p class=" fs-5">
           <strong>Alumni Connect</strong> is your gateway to professional networking, guidance, and mentorship. 
           We bridge the distance between today’s learners and yesterday’s achievers — cultivating growth and collaboration.
         </p>
-        <p class="text-muted fs-5">
+        <p class=" fs-5">
           Join our mission to <strong>connect, inspire, and grow</strong> through lifelong relationships that strengthen 
           with every graduating batch.
         </p>
       </div>
     </div>
   </div>
-</section>
+<!-- </section> -->
 
 
 <!-- Features Section -->
-<section class="features py-5 text-center">
-  <div class="container">
-    <h2 class="fw-bold mb-5 text-primary" data-aos="zoom-in">Why Join Alumni Connect?</h2>
+<!-- <section class="features py-5 text-center"> -->
+  <div class="container-fluid p-5">
+    <h2 class="fw-bold mt-5 mb-5 " data-aos="zoom-in">Why Join Alumni Connect?</h2>
     <div class="row g-4">
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="feature-card p-4 shadow-sm rounded-4">
@@ -81,5 +77,5 @@
       </div>
     </div>
   </div>
-</section>
+<!-- </section> -->
 

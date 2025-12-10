@@ -2,8 +2,8 @@
 
 
         <div class="card col-5 offset-4 other-cards">
+            <h3><b><%= job.title%></b></h3><br>
                 <p class="card-text">
-                    <b>Job Title: </b><%= job.title%><br>
                     <b>Description: </b><%= job.description%><br>
                     <b>Position: </b><%= job.position%><br>
                     <b>Company: </b><%= job.company%><br>
@@ -13,7 +13,7 @@
                 </p>
         </div>
 
-        <%if(currUser && currUser._id.equals(job.postedBy._id)){%>
+        <%if(currUser && currUser._id.equals(job.postedBy._id)||currUser.role=="admin"){%>
 <div class="row col-6 offset-4 mt-3">
     
     <div class="btns" style="display: flex; ">

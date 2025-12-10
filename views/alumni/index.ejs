@@ -25,7 +25,7 @@
     <!-- Alumni Grid -->
     <div class="row g-5 justify-content-center">
       <% for (let alumni of alumnis) { %>
-        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-10" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-10" data-aos="zoom-in" data-aos-delay="100">
           <a href="/alumni/<%= alumni._id %>" class="text-decoration-none">
             <div class="profile-card shadow-sm">
               <div class="profile-image" style="display:flex; justify-content: center;">
@@ -33,8 +33,8 @@
               </div>
               <div class="alumni-info text-center mt-3">
   <h5><%= alumni.name %></h5>
-  <p class="company"><%= alumni.company || 'Independent' %></p>
-  <p class="role"><%= alumni.role || 'Alumni' %></p>
+  <p class="text-muted mb-1 text-nowrap overflow-hidden text-truncate" style="max-width: 200px;"><%= alumni.company || 'Independent' %></p>
+  <p class="text-primary small"><%= alumni.role || 'Alumni' %></p>
 </div>
 
             </div>

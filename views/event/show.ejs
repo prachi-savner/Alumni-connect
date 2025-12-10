@@ -10,7 +10,7 @@
                     <b><i class="fa-solid fa-circle-user"></i></b><%= event.host ? event.host.name : "Host Not Available" %>
                 </p>
         </div>
-        <%if(currUser && event.host && currUser._id.equals(event.host._id)){%>
+        <%if(currUser && event.host && currUser._id.equals(event.host._id)||currUser.role=="admin"){%>
 <div class="row col-6 offset-4 mt-3">
     
     <div class="btns" style="display: flex; ">
