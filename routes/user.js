@@ -25,7 +25,7 @@ router.post("/signup",wrapAsync(async(req,res)=>{
         }
         req.flash("success","Welcome to Alumni-Connect");
         
-        res.redirect(`/${role}/${registerUser._id}/edit`);
+        res.redirect(`/profile`);
     })
    }catch(e){
     req.flash("error",e.message);
@@ -48,6 +48,8 @@ router.post("/login",passport.authenticate("local",{failureRedirect:"/login",fai
    req.flash("success","Welcome back to Alumni-connect");
   res.redirect(`/profile`);
 }));
+
+
   router.get("/logout",(req,res,next)=>{
 
     req.logout((err)=>{

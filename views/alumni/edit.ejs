@@ -4,7 +4,7 @@
             <h3>Edit your profile</h3>
     <form method="POST" action="/alumni/<%=alumni._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="name" class="form-label">name</label> 
+            <label for="name" class="form-label">Name</label> 
             <input name="alumni[name]"value="<%=alumni.name%>" type="text" class="form-control"required>
         </div>
         <div class="mb-3">
@@ -12,32 +12,32 @@
             <input name="alumni[company]" class="form-control" required value="<%=alumni.company%>">
         </div>
         <div class="mb-3">
-            <label for="profilePic" class="form-label">Image Link</label>
+            <label for="profilePic" class="form-label">Profile</label>
             <input name="alumni[profilePic]"   type="file" class="form-control" >
         </div>
         <div class="row">
             <div class="mb-3 col-md-4">
-            <label for="position" class="form-label">position</label>
-            <input name="alumni[position]" value="<%=alumni.position%>" type="text" class="form-control" required>
+            <label for="position" class="form-label">Position</label>
+            <input name="alumni[position]" value="<%=alumni.position%>" type="text" class="form-control">
             </div>
         
             <div class="mb-3 col-md-8">
-            <label for="experience" class="form-label">experience</label>
-            <input name="alumni[experience]" value="<%=alumni.experience%>" type="text" class="form-control" required>
+            <label for="experience" class="form-label">Experience</label>
+            <input name="alumni[experience]" value="<%=alumni.experience%>" type="text" class="form-control">
             </div>
         </div>
         <div class="mb-3">
-            <label for="skills" class="form-label">skills</label>
-            <input name="alumni[skills]" class="form-control" required value="<%=alumni.skills%>">
+            <label for="skills" class="form-label">Skills</label>
+            <input name="alumni[skills]" class="form-control" value="<%=alumni.skills%>">
         </div>
         <div class="mb-3">
-            <label for="linkedin" class="form-label">linkedin</label>
-            <input name="alumni[linkedin]" value="<%=alumni.linkedin%> "type="text" class="form-control" required>
+            <label for="linkedin" class="form-label">Linkedin</label>
+            <input name="alumni[linkedin]" value="<%=alumni.linkedin%> "type="text" class="form-control">
         </div>
 
         <div class="mb-3">
-            <label for="github" class="form-label">github</label>
-            <input name="alumni[github]" value="<%=alumni.github%> "type="text" class="form-control" required>
+            <label for="github" class="form-label">Github</label>
+            <input name="alumni[github]" value="<%=alumni.github%> "type="text" class="form-control" >
         </div>
         <div class="mb-3">
             <label for="bio" class="form-label">Bio</label>

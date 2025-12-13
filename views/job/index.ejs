@@ -29,7 +29,7 @@
 <% layout("/layouts/boilerplate") %>
 <body class="bg-light">
   <div class="container py-4">
-    <h2 class="fw-bold mb-4 text-primary">Job & Internship Opportunities</h2>
+    <h2 class="fw-bold mb-4" style="color: rgb(3, 3, 145);">Job & Internship Opportunities</h2>
 
     <% if (currUser && currUser.role !== "student") { %>
       <form action="/job/new" method="GET" class="mb-4">

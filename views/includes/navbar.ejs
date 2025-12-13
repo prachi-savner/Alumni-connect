@@ -5,7 +5,7 @@
      style="color: white; text-decoration: none;">
       ← 
   </a>
-    <a class="navbar-brand" href="/" style="color: rgb(1, 1, 248);"><b>AlumniConnect</b></a>
+    <a class="navbar-brand" href="/" style="color: rgb(14, 14, 191);"><b>AlumniConnect</b></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,15 +19,14 @@
         <a class="nav-link" href="/event"><i class="fa-solid fa-calendar-days"></i> Events</a>
         <a class="nav-link" href="/chat"><i class="fa-solid fa-comment-dots"></i> Join chat</a>
         <%if(currUser.role=='admin'){%>
-          
           <a href="/admin/users" class="nav-link">
-            Manage Users
+            <i class="fa-regular fa-id-badge"></i> Manage Users
           </a>
           <a href="/admin/pending" class="nav-link">
-           Pending Users
+           <i class="fa-solid fa-spinner"></i> Pending Users
           </a>
           <a href="/admin/dashboard" class="nav-link">
-            Dashboard
+           <i class="fa-solid fa-chart-simple"></i> Dashboard
           </a>
         <%}%>
         <%}%>

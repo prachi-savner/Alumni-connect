@@ -35,24 +35,7 @@ body {
   transform: scale(1.06);
   box-shadow: 0 14px 40px rgba(0,0,0,0.25);
 }
-.btn-get-started {
-  background: linear-gradient(135deg, #4facfe, #6a5af9) !important;
-  border: none !important;
-  color: #fff !important;
-  padding: 14px 34px;
-  font-weight: 600;
-  border-radius: 35px;
-  font-size: 18px;
-  display: inline-block;
-  text-decoration: none !important;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out !important;
-}
 
-.btn-get-started:hover {
-  transform: translateY(-4px);
-  opacity: 0.9;
-}
 
 /* AOS smoother animation */
 [data-aos] {

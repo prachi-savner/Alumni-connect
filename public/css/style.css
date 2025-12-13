@@ -13,7 +13,7 @@ body{
 
 /* navbar */
 .navbar{
-    height:5rem;
+    height:4rem;
     background-color:#ffffff;
 }
 
@@ -206,7 +206,7 @@ h3{
 }
 
 i{
-  opacity: 0.8;
+  opacity: 0.8 !important;
 }
 
 .navbar i{

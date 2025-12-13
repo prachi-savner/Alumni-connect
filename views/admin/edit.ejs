@@ -5,15 +5,15 @@
     <form method="POST" action="/admin/<%=admin._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="name" class="form-label">name</label> 
-            <input name="admin[name]"value="<%=admin.name%>" type="text" class="form-control"required>
+            <input name="admin[name]"value="<%=admin.name%>" type="text" class="form-control">
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">email</label> 
-            <input name="admin[email]"value="<%=admin.email%>" type="text" class="form-control"required>
+            <input name="admin[email]"value="<%=admin.email%>" type="text" class="form-control">
         </div>
         
         <div class="mb-3">
-            <label for="profilePic" class="form-label">Image Link</label>
+            <label for="profilePic" class="form-label">Profile</label>
             <input name="admin[profilePic]" type="file" class="form-control" >
         </div>
         

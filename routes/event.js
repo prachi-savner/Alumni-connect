@@ -31,7 +31,7 @@ router.post("/new",isLoggedIn,isAlumni,isVerified,wrapAsync(async (req,res,next)
 //show event 
 router.get("/:id",isLoggedIn,isVerified,wrapAsync(async (req,res)=>{
     const {id}=req.params;
-    const event=await Event.findById(id);
+    const event=await Event.findById(id).populate({path:"host",populate:{path:"name"}});
     console.log(event);
     if(!event){
         req.flash("error","event you requested for does not exists");
