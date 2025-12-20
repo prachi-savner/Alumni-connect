@@ -29,10 +29,10 @@ const userSchema = new Schema({
     url: {
       type: String,
       default:
-        "https://media.istockphoto.com/id/1477583639/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=OWGIPPkZIWLPvnQS14ZSyHMoGtVTn1zS8cAgLy1Uh24=",
+        "/profile-image-icon.jpg",
       set: (v) =>
         v === ""
-          ? "https://media.istockphoto.com/id/1477583639/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=OWGIPPkZIWLPvnQS14ZSyHMoGtVTn1zS8cAgLy1Uh24="
+          ? "/profile-image-icon.jpg"
           : v,
     },
   },

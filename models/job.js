@@ -33,10 +33,10 @@ skills: {
 type: [String],
 default: [],
 },
-// applyLink: {
-// type: String,
-// default: '',
-// },
+applyLink: {
+type: String,
+default: '',
+},
 postedBy: {
 type: Schema.Types.ObjectId,
 ref: 'User', 

@@ -212,3 +212,7 @@ i{
 .navbar i{
   opacity: 1;
 }
+
+.navbar-collapse{
+  background-color: #ffffff !important;;
+}

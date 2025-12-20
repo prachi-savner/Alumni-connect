@@ -1,7 +1,7 @@
 <%layout("/layouts/boilerplate")%>
 
 
-        <div class="card col-4 offset-4 other-cards" >
+        <div class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 other-cards my-5" >
                 <p class="card-text p-3">
                     <b><%= event.title%></b><br>
                     <b><i class="fa-solid fa-building"></i></b> <%= event.description%><br>
@@ -11,7 +11,7 @@
                 </p>
         </div>
         <%if(currUser && event.host && currUser._id.equals(event.host._id)||currUser.role=="admin"){%>
-<div class="row col-6 offset-4 mt-3">
+<div class="row col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 my-5">
     
     <div class="btns" style="display: flex; ">
     <a class="btn btn-dark col-1 offset-3 edit-btn" href="/event/<%=event._id%>/edit" style="display:flex;justify-content: center; margin-left: 0;"> Edit</a>

@@ -1,7 +1,7 @@
 <%layout("/layouts/boilerplate")%>
 
 
-        <div class="card col-5 offset-4 other-cards">
+        <div class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 other-cards my-5">
             <h3><b><%= job.title%></b></h3><br>
                 <p class="card-text">
                     <b>Description: </b><%= job.description%><br>
@@ -10,11 +10,13 @@
                     <b>Location: </b><%= job.location%><br>
                     <b>Type: </b><%= job.type%><br>
                     <b>Skills required: </b><%= job.skills%><br>
+                    <a class="btn btn-dark" href="<%=job.applyLink%>" style="display:flex;justify-content: center;"> Apply Now</a>
+    
                 </p>
         </div>
 
         <%if(currUser && currUser._id.equals(job.postedBy._id)||currUser.role=="admin"){%>
-<div class="row col-6 offset-4 mt-3">
+<div class="row col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3  my-5">
     
     <div class="btns" style="display: flex; ">
     <a class="btn btn-dark col-1 offset-3 edit-btn" href="/job/<%=job._id%>/edit" style="display:flex;justify-content: center; margin-left: 0; width: auto;"> Edit</a>
