@@ -16,6 +16,7 @@ const profileRouter=require("./routes/profile.js");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const session=require("express-session");
+const MongoStore = require("connect-mongo");
 const flash=require("connect-flash");
 const User = require("./models/user");
 const ExpressError=require("./utils/ExpressError.js");
@@ -51,8 +52,19 @@ app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 
 
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+        secret:"my secretcode"
+    },
+    touchAfter: 24 * 3600 // time period in seconds
+});
+store.on("error",(e)=>{
+    console.log("SESSION STORE ERROR",e);
+});
 const sessionOptions={
-    secret:"my secretcode",
+  store,
+    secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
@@ -63,12 +75,13 @@ const sessionOptions={
 }
 
 
+
 app.use(session(sessionOptions));
 app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(new LocalStrategy({ usernameField: "email" },User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

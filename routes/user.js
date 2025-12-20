@@ -19,6 +19,7 @@ router.post("/signup",wrapAsync(async(req,res)=>{
         await registerUser.save();
     }
     console.log(registerUser);
+    if(registerUser.verified==="true"){
     req.login(registerUser,(err)=>{
         if(err){
             return next(err);
@@ -27,6 +28,7 @@ router.post("/signup",wrapAsync(async(req,res)=>{
         
         res.redirect(`/profile`);
     })
+}
    }catch(e){
     req.flash("error",e.message);
     res.redirect("/signup");
