@@ -14,10 +14,6 @@ router.post("/signup",wrapAsync(async(req,res)=>{
      let {name,email,password,role}=req.body;
     const newUser=new User({email,name,role});
     const registerUser=await User.register(newUser,password);
-    if(registerUser.role=="admin"){
-        registerUser.verified=true;
-        await registerUser.save();
-    }
     console.log(registerUser);
     if(registerUser.verified==="true"){
     req.login(registerUser,(err)=>{
@@ -28,6 +24,9 @@ router.post("/signup",wrapAsync(async(req,res)=>{
         
         res.redirect(`/profile`);
     })
+}else{
+    req.flash("success","Registration successful. Please wait for admin to verify your account.");
+    res.redirect("/pending-approval");
 }
    }catch(e){
     req.flash("error",e.message);
