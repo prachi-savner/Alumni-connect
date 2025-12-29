@@ -54,8 +54,7 @@ router.put("/:id",isLoggedIn,isOwner,isVerified,upload.single('student[profilePi
     await user.save();
       }
      req.flash("success","user updated successfully");
-    //  res.redirect(`/student/${id}`)
-    res.send(req.file);
+     res.redirect(`/student/${id}`);
 }));
 
 //delete route
